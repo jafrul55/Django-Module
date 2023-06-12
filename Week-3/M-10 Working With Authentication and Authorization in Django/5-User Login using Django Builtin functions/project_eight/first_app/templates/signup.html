@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+{% if messages %}
+{% for m in messages %}
+<small {% if m.tags %} class="{{m.tags}}" {% endif %}>{{m}}</small>
+{% endfor %}
+
+{% endif %}
+<form method="post" style="width:50%; margin:auto" novalidate>
+    <h1>Signup Page</h1>
+    {% csrf_token %}
+    <!-- {{Form | crispy}} -->
+    <!-- To remove password all prerequisite: -->
+    {% for fm in Form %}
+
+    {{fm.label_tag}}
+
+    {{fm}}
+
+    <!-- To show form empty error -->
+    {{fm.errors | striptags }}
+    {% endfor %}
+    <br>
+    <!-- <input type="button" value="button"> -->
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- for css link -->
+    <link rel="stylesheet" href="{% static 'CSS/first.css'%}">
+</head>
+
+<body>
+    <h1>This is my first ever template in django</h1>
+    <a href="https://phitron.io">phitron website Link </a>
+    <br>
+    <a href="https://drive.google.com/file/d/1IOU_X5K0TWYQBXohbRQm_sR5XAXm2N1X/view?usp=sharing">My Resume Link </a>
+    <br>
+    <!-- <img src="{% static 'images/image1.jpg' %}" alt="Own Photo" style="height: 360px; width:340px;"> -->
+
+    <!-- There are one more alternative easy option to use it -->
+    {% static 'images/image1.jpg' as Computer%}
+    <img src="{{Computer}}" alt="Computer with man" style="height: 360px; width:340px;">
+
+
+    <!-- You can do it in different way but it is hard: -->
+    <img src="{% get_static_prefix %}images/image2.jpg " alt="Man with computer" style="height: 360px; width:340px;">
+
+    <!-- For link Javascript -->
+    <script src="{% static 'JS/index.js'%}"></script>
+</body>
+
+</html>

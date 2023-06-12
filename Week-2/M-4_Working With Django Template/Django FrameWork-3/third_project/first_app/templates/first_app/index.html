@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'firstApp/CSS/first.css'%}">
+</head>
+
+<body>
+    <h1>We are inside app</h1>
+    <!-- <h1>Author name : {{author}}</h1> -->
+    <h1>Author name : {{name}}</h1>
+    <img src="{% static 'firstApp/images/img2.jpg'%}" alt="jack-ma">
+
+  <!--{% if marks >= 80 %}
+        <p>You get Golden A+</p>
+      {% elif marks >= 70 %}
+        <p>You get A grade</p>
+      {% elif marks >= 40 %}
+        <p>You get pass marks</p>
+      {% else %}
+        <p>You get fail mark</p>
+      {% endif %}-->#to improve readabilty 
+
+    <!-- To check Marks: -->
+    <!-- {% if marks >= 80 %}
+    <p>You get Golden A+</p>
+    {% elif marks >= 70 and marks <= 79 %} <p>You get A grade</p>
+        {% elif marks >= 40 and marks <= 69 %} <p>You get pass marks</p>
+            {% else %} <p>You get fail mark</p>
+            {% endif %} -->
+
+    <!-- ----------------------------------------- -->
+    <!-- For using for Loop -->
+    <!-- <table border="1" width=500>
+
+        <tr>
+            <th>ID</th>
+            <th>Course</th>
+            <th>Teacher</th>
+        </tr>
+        {% for i in courses %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.course}}</td>
+            <td>{{i.teacher}}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table> -->
+    <!-- ----------------------------------- -->
+
+
+    <!-- Filters in DTL(Django Template Library) -->
+
+    <!-- Add Value -->
+    <h1>{{marks | add:"2"}}</h1>
+
+    <!-- Divisible Check -->
+    <h1>{{marks | divisibleby:"3"}}</h1>
+
+    <!-- Length -->
+    <h1>{{name | length}}</h1>
+
+    <!-- Word count -->
+    <h1>{{name | wordcount}}</h1>
+
+    <!-- Truncate words -->
+    <h1>{{blog |truncatewords:5}}</h1>
+
+    <!-- Truncate characters -->
+    <h1>{{blog |truncatechars:20}}</h1>
+
+
+    <!-- Make List -->
+    <h1>{{name | make_list }}</h1>
+
+    <!-- Upper Case -->
+    <h1>{{name | upper }}</h1>
+
+    <!-- Lower Case -->
+    <h1>{{name | lower }}</h1>
+
+    <!-- Join -->
+    <!-- {{ value | join:" // " }} -->
+    <h1>{{lst | join:"," }}</h1>
+
+
+    <!--  -->
+
+
+
+</body>
+
+</html>
