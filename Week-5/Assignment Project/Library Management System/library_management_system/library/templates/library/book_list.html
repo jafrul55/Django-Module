@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Book List</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Availability</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.availability_status }}</td>
+            <td>
+                {% if user.is_authenticated %}
+                {% if book in wishlist %}
+                <form action="{% url 'library:wishlist_remove' book.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                </form>
+                {% else %}
+                <form action="{% url 'library:wishlist_add' book.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+                </form>
+                {% endif %}
+                {% if book.availability_status %}
+                <form action="{% url 'library:book_reserve' book.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Reserve</button>
+                </form>
+                {% else %}
+                <form action="{% url 'library:book_borrow' book.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Borrow</button>
+                </form>
+                {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
